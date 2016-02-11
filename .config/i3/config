@@ -1,0 +1,174 @@
+# Colors
+##General
+## -fi = focused inactive
+## -un  = unfocused
+## -ur  = urgent
+set $color-border       #ff0000
+set $color-border-fi    #ff0000
+set $color-bg           #2196F3
+set $color-bg-un        #263238
+set $color-bg-ur        #0D47A1
+set $color-bg-fi        #263238
+set $color-indicator    #00BCD4
+set $color-indicator-un #00BCD4
+set $color-indicator-ur #00BCD4
+set $color-indicator-fi #00BCD4
+set $color-text         #f3f4f5
+set $color-text-un      #f3f4f5
+set $color-text-ur      #f3f4f5
+set $color-text-fi      #f3f4f5
+
+## Bar
+set $bar-color-border       #2196F3
+set $bar-color-border-in    #607D8B
+set $bar-color-border-ur    #DD2C00
+set $bar-color-bg           #2196F3
+set $bar-color-bg-in        #607D8B
+set $bar-color-bg-ur        #DD2C00
+set $bar-color-text         #FFFFFF
+set $bar-color-text-in      #FFFFFF
+set $bar-color-text-ur      #FFFFFF
+
+## Rofi
+set $rofi-color-bg          #263238
+
+# General
+## Settings
+set $mod Mod4
+font pango:Roboto 10
+smart_gaps on
+gaps inner 10
+hide_edge_borders both
+for_window [class="^.*"] border pixel 3
+## Binds
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -fullscreen -padding 400 -opacity "85" -bw 0 -bc "$rofi-color-bg" -bg "$rofi-color-bg" -fg "$text-color" -hlbg "$rofi-color-bg" -hlfg "#9575cd" -font "Roboto 18"
+### Sticky video window
+### https://www.reddit.com/r/unixporn/comments/3ktve2/i3_webm_now_with_sticky_windows/
+bindsym $mod+Shift+s sticky toggle
+bindsym $mod+y fullscreen disable; floating enable;
+
+# Startup
+exec_always feh --bg-scale /home/dan/wallpapers/first.png
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Shortcuts
+bindsym $mod+Return exec urxvt
+
+# Close window
+bindsym $mod+Shift+q kill
+
+# Change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# Move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split orientation
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# Change layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Make floaty
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# Do resize
+bindsym $mod+r mode "resize"
+
+# Window Colors
+##                      Border              Background      Text            Indicator
+client.focused          $color-border       $color-bg       $color-text     $color-indicator
+client.unfocused        $color-border-un    $color-bg-un    $color-text-un  $color-indicator-un
+client.focused_inactive $color-border-fi    $color-bg-fi    $color-text-fi  $color-indicator-fi
+client.urgent           $color-border-ur    $color-bg-ur    $color-text-ur  $color-indicator-ur
+
+# Bar
+bar {
+    status_command i3status
+
+    colors {
+        background #111111
+
+        #                   Border                  Background          Text
+        focused_workspace   $bar-color-border       $bar-color-bg       $bar-color-text
+        inactive_workspace  $bar-color-border-in    $bar-color-bg-in    $bar-color-text-in
+        active_workspace    $bar-color-border       $bar-color-bg       $bar-color-text
+        urgent_workspace    $bar-color-border-ur    $bar-color-bg-ur    $bar-color-text-ur
+    }
+}
