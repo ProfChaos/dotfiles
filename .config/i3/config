@@ -50,6 +50,10 @@ bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -fullscreen -paddin
 ### https://www.reddit.com/r/unixporn/comments/3ktve2/i3_webm_now_with_sticky_windows/
 bindsym $mod+Shift+s sticky toggle
 bindsym $mod+y fullscreen disable; floating enable;
+### Volume
+bindsym XF86AudioRaiseVolume exec amixer -q sset Headphone 5%+
+bindsym XF86AudioLowerVolume exec amixer -q sset Headphone 5%-
+bindsym XF86AudioMute exec amixer -q sset Headphone toggle
 
 # Startup
 exec_always feh --bg-scale /home/dan/wallpapers/first.png
