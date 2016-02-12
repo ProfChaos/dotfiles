@@ -162,9 +162,11 @@ client.unfocused        $color-border-un    $color-bg-un    $color-text-un  $col
 client.focused_inactive $color-border-fi    $color-bg-fi    $color-text-fi  $color-indicator-fi
 client.urgent           $color-border-ur    $color-bg-ur    $color-text-ur  $color-indicator-ur
 
-# Bar
+# Bars
 bar {
-    status_command i3status
+    status_command conky -c /home/dan/.config/i3/conkyrc
+    position bottom
+    tray_output DP-0
 
     colors {
         background #111111

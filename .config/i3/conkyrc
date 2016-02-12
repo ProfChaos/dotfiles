@@ -1,0 +1,14 @@
+background no
+out_to_x no
+out_to_console yes
+update_interval 2
+total_run_times 0
+use_spacer none
+
+
+TEXT
+  ${downspeed eno1} | ${upspeed eno1}     \
+  ${hwmon 2 temp 1} | ${hwmon 2 temp 3}     \
+  ${exec amixer get Headphone -c 0 -M | grep -m 1 -oE "[[:digit:]]*%"}     \
+  ${time %a %b %d}     \
+  ${time %H:%M}     
