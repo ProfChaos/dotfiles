@@ -51,12 +51,13 @@ bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -fullscreen -paddin
 bindsym $mod+Shift+s sticky toggle
 bindsym $mod+y fullscreen disable; floating enable;
 ### Volume
-bindsym XF86AudioRaiseVolume exec amixer -q sset Headphone 5%+
-bindsym XF86AudioLowerVolume exec amixer -q sset Headphone 5%-
-bindsym XF86AudioMute exec amixer -q sset Headphone toggle
+bindsym XF86AudioRaiseVolume exec amixer -q sset PCM 5%+
+bindsym XF86AudioLowerVolume exec amixer -q sset PCM 5%-
+bindsym XF86AudioMute exec amixer -q sset PCM toggle
 
 # Startup
 exec_always feh --bg-scale /home/dan/wallpapers/first.png
+exec_always compton # Prevent screen tearing
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
