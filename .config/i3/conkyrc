@@ -7,8 +7,9 @@ use_spacer none
 
 
 TEXT
+  ${cpu cpu0}%     \
   ${downspeed eno1} | ${upspeed eno1}     \
   ${hwmon 2 temp 1} | ${hwmon 2 temp 3}     \
-  ${exec amixer get Headphone -c 0 -M | grep -m 1 -oE "[[:digit:]]*%"}     \
+  ${exec amixer get PCM -c 0 -M | grep -m 1 -oE "[[:digit:]]*%"}     \
   ${time %a %b %d}     \
   ${time %H:%M}     
